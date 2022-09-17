@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: ui
-          image: bobput/02_ui:v2
+          image: bobput/02_ui:v3
           ports:
             - containerPort: 80
               name: ui
