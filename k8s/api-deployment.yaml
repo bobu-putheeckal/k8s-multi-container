@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-depl
+  namespace: default
+  labels:
+    app: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: bobput/02_api:v2
+          env:
+            - name: PORT
+              value: "3000"
+            - name: MONGO_USER
+              value: "root"
+            - name: MONGO_PWD
+              value: "example"
+            - name: MONGO_URL
+              value: "mongo-service.default"
+            - name: MONGO_PORT
+              value: "27017"
+        # - name: mongo
+        #   image: mongo
+        #   env:
+        #     - name: MONGO_INITDB_ROOT_USERNAME
+        #       value: root
+        #     - name: MONGO_INITDB_ROOT_PASSWORD
+        #       value: example
